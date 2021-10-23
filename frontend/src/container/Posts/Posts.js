@@ -1,9 +1,20 @@
-import React from 'react';
+import React , { useEffect } from 'react';
 import { Grid, Button, Typography } from '@mui/material';
-import PostItem from '../../components/PostItem/PostItem';
+import { useDispatch, useSelector } from "react-redux";
 import {Link} from "react-router-dom";
+import PostItem from '../../components/PostItem/PostItem';
+import { fetchMessages } from '../../store/actions/messagesActions';
 
 const Posts = () => {
+    const dispatch = useDispatch();
+    const news = useSelector(state => state.news.news);
+
+    useEffect(() => {
+        setInterval(() => {
+            dispatch(fetchMessages());
+          }, 1000);
+    }, [dispatch]);
+
     return (
         <Grid container justifyContent='center' mt={3}>
             <Grid item container justifyContent="space-around" alignItems="center" mb={4}>
@@ -16,14 +27,14 @@ const Posts = () => {
             </Grid>
 
             <Grid item container direction="row" spacing={1}>
-                {/* {posts.map(post => (
+                {/* {news.map(n => (
                     <PostItem
-                        key={post.id}
-                        id={post.id}
-                        title={post.title}
-                        description={post.description}
-                        datetime={post.datetime}
-                        image={post.image}
+                        key={n.id}
+                        id={n.id}
+                        title={n.title}
+                        description={n.description}
+                        datetime={n.datetime}
+                        image={n.image}
                     />
                 ))} */}
             </Grid>

@@ -49,7 +49,7 @@ export const createMessage = messageData => {
     };
 };
 
-export const deleteMessage = messageData => {
+export const deleteMessage = id => {
     return async dispatch => {
         try {
             dispatch(deleteMessageRequest());
