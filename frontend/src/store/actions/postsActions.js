@@ -61,9 +61,7 @@ export const createNews = newsData => {
     return async dispatch => {
         try {
             dispatch(createNewsRequest());
-
             await axiosApi.post('/news', newsData);
-
             dispatch(createNewsSuccess());
         } catch (e) {
             dispatch(createNewsFailure());

@@ -8,6 +8,10 @@ export const CREATE_MESSAGE_REQUEST = 'CREATE_MESSAGE_REQUEST';
 export const CREATE_MESSAGE_SUCCESS = 'CREATE_MESSAGE_SUCCESS';
 export const CREATE_MESSAGE_FAILURE = 'CREATE_MESSAGE_FAILURE';
 
+export const DELETE_MESSAGE_REQUEST = 'DELETE_MESSAGE_REQUEST';
+export const DELETE_MESSAGE_SUCCESS = 'DELETE_MESSAGE_SUCCESS';
+export const DELETE_MESSAGE_FAILURE = 'DELETE_MESSAGE_FAILURE';
+
 export const fetchMessagesRequest = () => ({ type: FETCH_MESSAGES_REQUEST });
 export const fetchMessagesSuccess = messages => ({ type: FETCH_MESSAGES_SUCCESS, payload: messages });
 export const fetchMessagesFailure = () => ({ type: FETCH_MESSAGES_FAILURE });
@@ -15,6 +19,10 @@ export const fetchMessagesFailure = () => ({ type: FETCH_MESSAGES_FAILURE });
 export const createMessageRequest = () => ({ type: CREATE_MESSAGE_REQUEST });
 export const createMessageSuccess = () => ({ type: CREATE_MESSAGE_SUCCESS });
 export const createMessageFailure = () => ({ type: CREATE_MESSAGE_FAILURE });
+
+export const deleteMessageRequest = () => ({ type: DELETE_MESSAGE_REQUEST });
+export const deleteMessageSuccess = () => ({ type: DELETE_MESSAGE_SUCCESS });
+export const deleteMessageFailure = () => ({ type: DELETE_MESSAGE_FAILURE });
 
 export const fetchMessages = () => {
     return async dispatch => {
@@ -32,12 +40,23 @@ export const createMessage = messageData => {
     return async dispatch => {
         try {
             dispatch(createMessageRequest());
-
             await axiosApi.post('/comments', messageData);
-
             dispatch(createMessageSuccess());
         } catch (e) {
             dispatch(createMessageFailure());
+            throw e;
+        }
+    };
+};
+
+export const deleteMessage = messageData => {
+    return async dispatch => {
+        try {
+            dispatch(deleteMessageRequest());
+            await axiosApi.post('/comments/' + id);
+            dispatch(deleteMessageSuccess());
+        } catch (e) {
+            dispatch(deleteMessageFailure());
             throw e;
         }
     };
