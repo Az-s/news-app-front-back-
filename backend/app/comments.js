@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
     const newComments = await mysqlDb.getConnection().query(
         'INSERT INTO ?? (author, comment) values (?, ?)',
-        ['news', comments.title, comments.comment]
+        ['comments', comments.title, comments.comment]
     );
 
     res.send({

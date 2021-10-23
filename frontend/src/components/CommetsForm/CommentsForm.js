@@ -22,11 +22,12 @@ const CommentsForm = () => {
     };
 
     const inputChangeHandler = e => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setComments(prevState => {
-            return { ...prevState, [name]: value };
-        });
+        const { name, value } = e.target;
+
+        setComments(prev => ({
+            ...prev,
+            [name]: value
+        }));
     };
 
     return (

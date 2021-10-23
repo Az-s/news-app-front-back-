@@ -36,7 +36,7 @@ export const fetchMessages = () => {
     };
 };
 
-export const createMessage = messageData => {
+export const createMessage = (id , messageData) => {
     return async dispatch => {
         try {
             dispatch(createMessageRequest());

@@ -1,9 +1,9 @@
-import React , { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Button, Typography } from '@mui/material';
 import { useDispatch, useSelector } from "react-redux";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import PostItem from '../../components/PostItem/PostItem';
-import { fetchNews } from '../../store/actions/postsActions';
+import { fetchNews , deleteNews } from '../../store/actions/postsActions';
 
 const Posts = () => {
     const dispatch = useDispatch();
@@ -12,8 +12,12 @@ const Posts = () => {
     useEffect(() => {
         setInterval(() => {
             dispatch(fetchNews());
-          }, 1000);
+        }, 1000);
     }, [dispatch]);
+
+    const delContact = async (id) => {
+        await dispatch(deleteNews(id));
+    };
 
     return (
         <Grid container justifyContent='center' mt={3}>
@@ -35,6 +39,7 @@ const Posts = () => {
                         description={n.description}
                         datetime={n.time}
                         image={n.image}
+                        onDelete={() => delContact(n.id)}
                     />
                 ))}
             </Grid>

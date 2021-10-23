@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import imageNotAvailable from '../../assets/images/no_image.jpg';
 import {apiURL} from "../../config";
 
-const PostItem = ({ title, description, id, image, datetime }) => {
+const PostItem = ({ title, onDelete, id, image, datetime }) => {
     let cardImage = imageNotAvailable;
 
     if (image) {
@@ -36,7 +36,7 @@ const PostItem = ({ title, description, id, image, datetime }) => {
                     <IconButton component={Link} to={'/news/' + id}>
                         <ArrowForwardIcon />
                     </IconButton>
-                    <IconButton>
+                    <IconButton onClick={onDelete}>
                         <DeleteIcon />
                     </IconButton>
                 </CardActions>
