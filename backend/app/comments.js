@@ -1,7 +1,6 @@
 const express = require('express');
 const mysqlDb = require('../mysqlDb');
 
-
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -32,7 +31,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const [comments] = await mysqlDb.getConnection().query(
-        `DELETE * FROM ?? where id = ?`,
+        `DELETE FROM ?? where id = ?`,
         ['comments', req.params.id])
 
     res.send(comments[0]);

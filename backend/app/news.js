@@ -61,7 +61,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const [news] = await mysqlDb.getConnection().query(
-        `DELETE * FROM ?? where id = ?`,
+        `DELETE FROM ?? where id = ?`,
         ['news', req.params.id])
 
     res.send(news[0]);
