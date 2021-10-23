@@ -12,7 +12,7 @@ import App from './App';
 import './index.css';
 
 const rootReducer = combineReducers({
-  posts: postsReducer,
+  news: postsReducer,
   messages: messagesReducer
 });
 

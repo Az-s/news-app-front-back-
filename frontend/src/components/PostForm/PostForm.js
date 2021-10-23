@@ -1,14 +1,47 @@
-import React, {useState} from "react";
-import { Grid , Button , TextField} from '@mui/material';
+import React, { useState } from "react";
+import { Grid, Button, TextField } from '@mui/material';
+import FileInput from '../FileInput/FileInput';
 
-const PostForm = ({onSubmit}) => {
+const PostForm = ({ onSubmit }) => {
+    const [state, setState] = useState({
+        title: "",
+        description: "",
+        image: null,
+    });
+
+    const submitFormHandler = e => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        Object.keys(state).forEach(key => {
+            formData.append(key, state[key]);
+        });
+
+        onSubmit(formData);
+    };
+
+    const inputChangeHandler = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setState(prevState => {
+            return { ...prevState, [name]: value };
+        });
+    };
+
+    const fileChangeHandler = e => {
+        const name = e.target.name;
+        const file = e.target.files[0];
+        setState(prevState => {
+            return { ...prevState, [name]: file }
+        });
+    };
+
     return (
         <Grid
             container
             direction="column"
             spacing={2}
             component="form"
-            className={classes.root}
             autoComplete="off"
             onSubmit={submitFormHandler}
         >
@@ -19,6 +52,7 @@ const PostForm = ({onSubmit}) => {
                     name="title"
                     value={state.title}
                     onChange={inputChangeHandler}
+                    sx={{minWidth: '400px'}}
                 />
             </Grid>
 
@@ -31,6 +65,7 @@ const PostForm = ({onSubmit}) => {
                     name="description"
                     value={state.description}
                     onChange={inputChangeHandler}
+                    sx={{minWidth: '400px'}}
                 />
             </Grid>
 
@@ -49,4 +84,4 @@ const PostForm = ({onSubmit}) => {
     )
 }
 
-export default PostForm
+export default PostForm;

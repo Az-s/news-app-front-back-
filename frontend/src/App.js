@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import NavBar from './components/NavBar/NavBar';
 import Posts from './container/Posts/Posts';
 import NewPosts from './container/NewPosts/NewPosts';
+import Post from './container/Post/Post';
 import './App.css';
 
 function App() {

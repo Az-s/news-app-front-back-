@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Button, Typography } from '@mui/material';
 import PostItem from '../../components/PostItem/PostItem';
+import {Link} from "react-router-dom";
 
 const Posts = () => {
     return (
@@ -15,7 +16,7 @@ const Posts = () => {
             </Grid>
 
             <Grid item container direction="row" spacing={1}>
-                {posts.map(post => (
+                {/* {posts.map(post => (
                     <PostItem
                         key={post.id}
                         id={post.id}
@@ -24,7 +25,7 @@ const Posts = () => {
                         datetime={post.datetime}
                         image={post.image}
                     />
-                ))}
+                ))} */}
             </Grid>
         </Grid>
     )
