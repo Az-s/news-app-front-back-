@@ -10,6 +10,6 @@ module.exports = {
 		host: 'localhost',
 		user: 'user',
 		password: 'test',
-		database: 'news',
+		database: 'newsDb',
 	}
 };

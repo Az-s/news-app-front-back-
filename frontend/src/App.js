@@ -14,8 +14,8 @@ function App() {
         <CssBaseline />
         <NavBar />
         <Route path="/" exact component={Posts} />
-        <Route path="/posts/new" component={NewPosts} />
-        <Route path="/posts/:id" component={Post} />
+        <Route path="/new" component={NewPosts} />
+        <Route path="/news/:id" component={Post} />
       </Router>
     </div>
   );

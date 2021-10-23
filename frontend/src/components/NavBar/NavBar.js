@@ -10,7 +10,7 @@ const NavBar = () => {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar variant="dense" sx={{justifyContent: 'center'}}>
-                    <Typography variant="h6" color="inherit" component="div" component={Link} to={'/'} sx={{textDecoration: 'none'}}>
+                    <Typography variant="h6" color="inherit"  component={Link} to={'/'} sx={{textDecoration: 'none'}}>
                         News
                     </Typography>
                 </Toolbar>

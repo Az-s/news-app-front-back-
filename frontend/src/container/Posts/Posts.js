@@ -3,7 +3,7 @@ import { Grid, Button, Typography } from '@mui/material';
 import { useDispatch, useSelector } from "react-redux";
 import {Link} from "react-router-dom";
 import PostItem from '../../components/PostItem/PostItem';
-import { fetchMessages } from '../../store/actions/messagesActions';
+import { fetchNews } from '../../store/actions/postsActions';
 
 const Posts = () => {
     const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const Posts = () => {
 
     useEffect(() => {
         setInterval(() => {
-            dispatch(fetchMessages());
+            dispatch(fetchNews());
           }, 1000);
     }, [dispatch]);
 
@@ -22,21 +22,21 @@ const Posts = () => {
                     <Typography variant="h4">Posts</Typography>
                 </Grid>
                 <Grid item>
-                    <Button color="primary" component={Link} to="/posts/new">Add new post</Button>
+                    <Button color="primary" component={Link} to="/new">Add new post</Button>
                 </Grid>
             </Grid>
 
-            <Grid item container direction="row" spacing={1}>
-                {/* {news.map(n => (
+            <Grid item container direction="row" spacing={2}>
+                {news.map(n => (
                     <PostItem
                         key={n.id}
                         id={n.id}
                         title={n.title}
                         description={n.description}
-                        datetime={n.datetime}
+                        datetime={n.time}
                         image={n.image}
                     />
-                ))} */}
+                ))}
             </Grid>
         </Grid>
     )

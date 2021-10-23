@@ -15,7 +15,7 @@ const PostItem = ({ title, description, id, image, datetime }) => {
 
     return (
         <Grid item xs={12} sm={6} md={6} lg={4}>
-            <Card sx={{ height: '100%' }}>
+            <Card sx={{ height: '100%' , margin: '1rem'}}>
                 <CardHeader title={title} />
                 <CardMedia
                     image={cardImage}
@@ -32,8 +32,8 @@ const PostItem = ({ title, description, id, image, datetime }) => {
                         {datetime}
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <IconButton component={Link} to={'/posts/' + id}>
+                <CardActions sx={{ justifyContent: 'space-between' }}>
+                    <IconButton component={Link} to={'/news/' + id}>
                         <ArrowForwardIcon />
                     </IconButton>
                     <IconButton>
