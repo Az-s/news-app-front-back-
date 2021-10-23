@@ -14,6 +14,7 @@ function App() {
         <NavBar />
         <Route path="/" exact component={Posts} />
         <Route path="/posts/new" component={NewPosts} />
+        <Route path="/posts/:id" component={Post} />
       </Router>
     </div>
   );

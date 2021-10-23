@@ -1,13 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {BrowserRouter} from "react-router-dom";
+import {applyMiddleware, combineReducers, compose, createStore} from "redux";
+import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+import { ThemeProvider } from '@mui/material/styles';
+import postsReducer from './store/reducer/postsReducer';
+import messagesReducer from './store/reducer/messagesREducer';
+import theme from './theme';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const rootReducer = combineReducers({
+  posts: postsReducer,
+  messages: messagesReducer
+});
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(rootReducer, composeEnhancers(
+  applyMiddleware(thunk)
+));
+
+const app = (
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </ThemeProvider>
+  </Provider>
 );
 
+ReactDOM.render(app, document.getElementById('root'));
